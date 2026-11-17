@@ -3,6 +3,25 @@
    videos/<pasta>/ com os nomes: final.mp4 (+ .jpg), drone1..N.mp4, cel1..N.mp4 (+ .jpg). */
 window.PROJETOS = [
   {
+    slug: "loteamento-nova-esperanca",
+    pasta: "loteamento-ne",
+    nome: "Loteamento Nova Esperança",
+    local: "Centro · Canelinha/SC",
+    resumo: "Loteamento no Centro de Canelinha/SC, com as montanhas ao fundo. Voo de drone em um dia nublado e edição completa com céu ensolarado, pronta para as redes.",
+    ficha: [["Tipo", "Loteamento"], ["Captação", "Drone · vídeo e foto"], ["Vídeo", "Vertical · 31 s"]],
+    destaques: [
+      "Abertura com a planta desenhada que se transforma no loteamento",
+      "Céu nublado trocado por céu ensolarado em todas as tomadas",
+      "Órbita aérea com as montanhas ao fundo e vista da cidade",
+      "Pino no terreno e localização no final"
+    ],
+    versoes: [
+      { nome: "Versão 1", arquivo: "final" }
+    ],
+    drone: 5,
+    internas: 0
+  },
+  {
     slug: "exclusive-3-quartos",
     pasta: "exclusive-3q",
     nome: "Residencial Exclusive · 3 quartos",
