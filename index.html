@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Joaquim Simas Reis · Captação aérea de imóveis</title>
+<meta name="description" content="Vídeos de imóveis com drone e tomadas internas, editados e prontos para Reels, anúncios e WhatsApp. Veja o vídeo final e o material bruto de cada projeto.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Joaquim Simas Reis · Captação aérea de imóveis">
+<meta property="og:description" content="Veja o vídeo final e o material bruto de cada imóvel gravado.">
+<meta property="og:url" content="https://joaquimsimasreis.github.io/">
+<meta property="og:image" content="https://joaquimsimasreis.github.io/videos/exclusive-3q/drone9.jpg">
+<meta name="theme-color" content="#0d161b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='8' fill='%23e8a317'/%3E%3Cg fill='none' stroke='%231a1405' stroke-width='2'%3E%3Ccircle cx='10' cy='10' r='4'/%3E%3Ccircle cx='24' cy='10' r='4'/%3E%3Ccircle cx='10' cy='24' r='4'/%3E%3Ccircle cx='24' cy='24' r='4'/%3E%3Cpath d='M13 13l8 8M21 13l-8 8'/%3E%3C/g%3E%3C/svg%3E">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* Layout: faixa escura de abertura com voo de drone + seções claras em coluna de 1120px; telemetria de drone como detalhe tipográfico */
+:root{
+  --bg:#f2f4f3;--surface:#ffffff;--ink:#0f1a20;--muted:#56646c;--line:#dde3e2;
+  --accent:#e8a317;--accent-ink:#1a1405;--band:#0d161b;--band-ink:#e9eef0;--band-muted:#93a3ab;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  --gutter-l:max(16px,env(safe-area-inset-left,0px));--gutter-r:max(16px,env(safe-area-inset-right,0px));
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0b1216;--surface:#121c21;--ink:#e9eef0;--muted:#97a6ae;--line:#223038;
+  --accent:#f0b030;--accent-ink:#1a1405;--band:#070c0f;--band-ink:#e9eef0;--band-muted:#93a3ab;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0b1216;--surface:#121c21;--ink:#e9eef0;--muted:#97a6ae;--line:#223038;
+  --accent:#f0b030;--accent-ink:#1a1405;--band:#070c0f;--band-ink:#e9eef0;--band-muted:#93a3ab;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--band)}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.lead{color:var(--muted);max-width:62ch}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 var(--body);padding:15px 22px;border-radius:8px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-ghost{border-color:rgba(233,238,240,.28);color:var(--band-ink)}
+.btn-ghost:hover{background:rgba(233,238,240,.08)}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* topo */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--band);color:var(--band-ink);border-bottom:1px solid rgba(233,238,240,.08)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 16px/1.1 var(--display);letter-spacing:.01em}
+.brand small{display:block;font:500 11px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--band-muted)}
+.mark{width:34px;height:34px;flex:none}
+.nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:14px;color:var(--band-muted)}
+.nav ul a{text-decoration:none}.nav ul a:hover{color:var(--band-ink)}
+.nav .btn{padding:11px 16px;font-size:14px}
+@media (max-width:860px){.nav ul{display:none}}
+@media (max-width:440px){.nav .btn span{display:none}.nav .btn{padding:11px}}
+
+/* abertura */
+.hero{background:var(--band);color:var(--band-ink)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,320px);gap:64px;align-items:center;padding-block:64px 72px}
+.hero h1{font-size:clamp(34px,5.2vw,60px);font-weight:800;letter-spacing:-.02em;margin:18px 0 18px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{color:var(--band-muted);font-size:17px}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.screen{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:9/16;width:100%;max-width:320px;justify-self:center;background:#000;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+.screen video{width:100%;height:100%;object-fit:cover;display:block}
+.hud{position:absolute;inset:0;pointer-events:none;font:500 11px/1 var(--mono);letter-spacing:.08em;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+.hud span{position:absolute;padding:6px 8px;background:rgba(0,0,0,.35);border-radius:4px}
+.hud .tl{top:12px;left:12px}.hud .tr{top:12px;right:12px}.hud .bl{bottom:12px;left:12px}
+.hud .rec::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#ff4d3d;margin-right:7px;vertical-align:1px}
+.hud .corner{position:absolute;width:22px;height:22px;border-color:rgba(255,255,255,.7);border-style:solid}
+.c1{top:48px;left:28px;border-width:2px 0 0 2px}.c2{top:48px;right:28px;border-width:2px 2px 0 0}
+.c3{bottom:48px;left:28px;border-width:0 0 2px 2px}.c4{bottom:48px;right:28px;border-width:0 2px 2px 0}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:40px;padding-block:44px 52px}.screen{max-width:280px}}
+
+/* seletor de imóveis */
+.picker{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:56px}
+.pcard{display:grid;grid-template-columns:72px minmax(0,1fr);gap:14px;align-items:center;padding:12px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-align:left;font:inherit;cursor:pointer}
+.pcard img{width:72px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#000}
+.pcard b{display:block;font:700 15px/1.25 var(--display)}
+.pcard span{font-size:13px;color:var(--muted)}
+.pcard[aria-current="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.pcard.soon{cursor:default;border-style:dashed;background:transparent}
+.soon .ph{width:72px;aspect-ratio:9/16;border-radius:6px;border:1px dashed var(--line);display:grid;place-items:center;color:var(--muted)}
+.soon .ph svg{width:22px;height:22px}
+.pcard .tag{display:inline-block;margin-top:6px;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:860px){.picker{grid-template-columns:1fr}}
+
+/* faixa de diferenciais */
+.facts{border-bottom:1px solid var(--line);background:var(--surface)}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;padding-block:26px}
+.fact b{display:block;font:700 15px/1.3 var(--display)}
+.fact p{font-size:14px;color:var(--muted);margin-top:4px}
+@media (max-width:820px){.facts .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* seções */
+section{padding-block:80px;scroll-margin-top:64px}
+.head{display:grid;gap:12px;margin-bottom:36px}
+.head h2{font-size:clamp(28px,3.6vw,40px);font-weight:800;letter-spacing:-.015em}
+
+/* projeto */
+.project{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:56px;align-items:start}
+.phone{display:grid;gap:14px;justify-items:center}
+.phone video{width:100%;max-width:360px;aspect-ratio:9/16;border-radius:18px;background:#000;display:block;box-shadow:0 24px 50px -24px rgba(15,26,32,.45)}
+.seg{display:inline-flex;padding:4px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.seg button{font:600 14px/1 var(--body);padding:10px 18px;border-radius:999px;border:0;background:transparent;color:var(--muted);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.note{font-size:13px;color:var(--muted);text-align:center}
+.spec{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:28px 0}
+.spec div{padding:18px 0}
+.spec div+div{padding-left:20px;border-left:1px solid var(--line)}
+.spec dt{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.spec dd{margin:8px 0 0;font:700 22px/1.1 var(--display);font-variant-numeric:tabular-nums}
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.checks li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px}
+.checks svg{width:22px;height:22px;color:var(--accent)}
+@media (max-width:860px){.project{grid-template-columns:1fr;gap:40px}}
+@media (max-width:440px){.spec{grid-template-columns:1fr}.spec div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+
+/* bruto */
+.raw{background:var(--surface);border-block:1px solid var(--line)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.tabs button{font:600 14px/1 var(--body);padding:11px 18px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tabs .count{font:500 12px var(--mono);opacity:.6;margin-left:6px}
+.grid{display:grid;gap:14px}
+.grid.h{grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr))}
+.grid.v{grid-template-columns:repeat(auto-fill,minmax(min(100%,170px),1fr))}
+.clip{margin:0;display:grid;gap:8px}
+.clip video{width:100%;max-width:100%;border-radius:8px;background:#000;display:block;object-fit:cover}
+.grid.h video{aspect-ratio:16/9}.grid.v video{aspect-ratio:9/16}
+.clip figcaption{display:flex;justify-content:space-between;gap:8px;font:500 12px/1.2 var(--mono);color:var(--muted);letter-spacing:.04em}
+
+/* etapas */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;list-style:none;padding:0;margin:0;counter-reset:s}
+.steps li{counter-increment:s;border-top:2px solid var(--ink);padding-top:18px}
+.steps li::before{content:"0" counter(s);font:500 12px/1 var(--mono);color:var(--accent);letter-spacing:.1em}
+.steps h3{font-size:19px;margin:12px 0 8px}
+.steps p{font-size:15px;color:var(--muted)}
+@media (max-width:860px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+
+/* contato */
+.cta{background:var(--band);color:var(--band-ink)}
+.cta .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center;padding-block:72px}
+.cta h2{font-size:clamp(28px,3.8vw,44px);font-weight:800;letter-spacing:-.015em}
+.cta .lead{color:var(--band-muted);margin-top:12px}
+.phone-line{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:18px;font:500 15px var(--mono);color:var(--band-ink)}
+.copy{font:600 12px/1 var(--body);padding:8px 12px;border-radius:6px;border:1px solid rgba(233,238,240,.28);background:transparent;color:var(--band-ink);cursor:pointer}
+@media (max-width:760px){.cta .wrap{grid-template-columns:1fr}}
+footer{background:var(--band);color:var(--band-muted);border-top:1px solid rgba(233,238,240,.08);font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-block:22px}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Principal">
+  <div class="wrap">
+    <a class="brand" href="#topo">
+      <svg class="mark" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="8" fill="var(--accent)"/><g fill="none" stroke="var(--accent-ink)" stroke-width="2"><circle cx="10" cy="10" r="4"/><circle cx="24" cy="10" r="4"/><circle cx="10" cy="24" r="4"/><circle cx="24" cy="24" r="4"/><path d="M13 13l8 8M21 13l-8 8"/></g></svg>
+      <span>Joaquim Simas Reis<small>Captação aérea de imóveis</small></span>
+    </a>
+    <ul>
+      <li><a href="#projeto">Projeto</a></li>
+      <li><a href="#bruto">Material bruto</a></li>
+      <li><a href="#como-funciona">Como funciona</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <a class="btn btn-primary" href="https://wa.me/5548998516170?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20de%20v%C3%ADdeo%20para%20im%C3%B3vel." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+      <span>Pedir orçamento</span>
+    </a>
+  </div>
+</nav>
+
+<header class="hero" id="topo">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Drone · Internas · Edição</div>
+      <h1>Vídeos de imóveis que fazem o cliente <em>querer visitar</em></h1>
+      <p class="lead">Capto o imóvel do alto e por dentro, e entrego o vídeo editado, pronto para Reels, anúncios e WhatsApp. Abaixo você vê projetos completos: o resultado final e o material gravado, sem edição.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#projeto">Ver o projeto</a>
+        <a class="btn btn-ghost" href="#bruto">Ver o material bruto</a>
+      </div>
+    </div>
+    <div class="screen">
+      <video src="videos/exclusive-3q/drone9.mp4" poster="videos/exclusive-3q/drone9.jpg" autoplay muted loop playsinline aria-label="Voo de drone sobre o Residencial Exclusive"></video>
+      <div class="hud" aria-hidden="true">
+        <span class="tl rec">REC</span>
+        <span class="tr">CANELINHA · SC</span>
+        <span class="bl">BRUTO · SEM EDIÇÃO</span>
+        <i class="corner c1"></i><i class="corner c2"></i><i class="corner c3"></i><i class="corner c4"></i>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="facts">
+  <div class="wrap">
+    <div class="fact"><b>Imagens aéreas</b><p>Voos de drone que mostram o imóvel, o terreno e a vizinhança.</p></div>
+    <div class="fact"><b>Todos os ambientes</b><p>Tomadas internas de cada cômodo, com estabilização.</p></div>
+    <div class="fact"><b>Edição na batida</b><p>Cortes na música, cor tratada e textos animados.</p></div>
+    <div class="fact"><b>Pronto para postar</b><p>Formato vertical 9:16 para Reels, Stories e anúncios.</p></div>
+  </div>
+</div>
+
+<main>
+  <section id="projeto">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">Portfólio</div>
+        <h2>Imóveis gravados</h2>
+        <p class="lead">Escolha um imóvel para ver o vídeo final e o material bruto daquela gravação.</p>
+      </div>
+      <div class="picker" id="picker"></div>
+      <div class="project">
+        <div class="phone">
+          <video id="final" controls playsinline preload="metadata"></video>
+          <div class="seg" id="versoes" role="group" aria-label="Escolher versão do vídeo"></div>
+          <p class="note" id="versoes-nota"></p>
+        </div>
+        <div>
+          <div class="head">
+            <div class="eyebrow" id="p-local"></div>
+            <h2 id="p-nome"></h2>
+            <p class="lead" id="p-resumo"></p>
+          </div>
+          <dl class="spec" id="p-ficha"></dl>
+          <ul class="checks" id="p-destaques"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="raw" id="bruto">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">Do bruto ao final</div>
+        <h2>O material gravado, sem edição</h2>
+        <p class="lead">Trechos das tomadas originais do <strong id="bruto-nome"></strong>. É daqui que sai o vídeo final: compare e veja o cuidado em cada etapa.</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Tipo de tomada">
+        <button type="button" role="tab" id="tab-drone" aria-selected="true" aria-controls="painel-drone">Drone<span class="count" id="n-drone"></span></button>
+        <button type="button" role="tab" id="tab-cel" aria-selected="false" aria-controls="painel-cel">Internas<span class="count" id="n-cel"></span></button>
+      </div>
+      <div class="grid v" id="painel-drone" role="tabpanel" aria-labelledby="tab-drone"></div>
+      <div class="grid v" id="painel-cel" role="tabpanel" aria-labelledby="tab-cel" hidden></div>
+    </div>
+  </section>
+
+  <section id="como-funciona">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">Como funciona</div>
+        <h2>Do agendamento ao vídeo pronto</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Agendamento</h3><p>Combinamos pelo WhatsApp o dia e o horário com a melhor luz para o imóvel.</p></li>
+        <li><h3>Captação</h3><p>Voo de drone em volta do imóvel e tomadas internas de todos os ambientes.</p></li>
+        <li><h3>Edição</h3><p>Seleção das melhores tomadas, música, cor e textos com os dados do imóvel.</p></li>
+        <li><h3>Entrega</h3><p>Você recebe o vídeo vertical pronto para postar e anunciar.</p></li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<section class="cta" id="contato">
+  <div class="wrap">
+    <div>
+      <h2>Quer um vídeo assim do seu imóvel?</h2>
+      <p class="lead">Mande uma mensagem com a cidade e o tipo de imóvel e eu retorno com o orçamento.</p>
+      <div class="phone-line"><span id="fone">(48) 99851-6170</span><button type="button" class="copy" id="copiar">Copiar número</button></div>
+    </div>
+    <a class="btn btn-primary" href="https://wa.me/5548998516170?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20de%20v%C3%ADdeo%20para%20im%C3%B3vel." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+      Chamar no WhatsApp
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Joaquim Simas Reis · Captação aérea de imóveis</span>
+    <span>Canelinha · SC</span>
+  </div>
+</footer>
+
+<script src="projetos.js"></script>
+<script>
+(function(){
+  var P=window.PROJETOS||[];
+  var $=function(id){return document.getElementById(id)};
+  function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+  var CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>';
+  var PLUS='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
+
+  function clips(id,dir,pre,n,label){
+    var g=$(id);g.innerHTML='';
+    for(var i=1;i<=n;i++){
+      var f=el('figure','clip'),v=document.createElement('video');
+      v.src=dir+pre+i+'.mp4';v.poster=dir+pre+i+'.jpg';
+      v.preload='none';v.controls=true;v.muted=true;v.playsInline=true;v.loop=true;
+      v.setAttribute('aria-label',label+' '+i);
+      var c=el('figcaption');c.appendChild(el('span',null,label+' '+String(i).padStart(2,'0')));c.appendChild(el('span',null,'BRUTO'));
+      f.appendChild(v);f.appendChild(c);g.appendChild(f);
+    }
+  }
+
+  function setVersao(p,k){
+    var dir='videos/'+p.pasta+'/',a=p.versoes[k].arquivo,fv=$('final');
+    fv.poster=dir+a+'.jpg';fv.src=dir+a+'.mp4';fv.load();
+    $('versoes').querySelectorAll('button').forEach(function(b,j){b.setAttribute('aria-pressed',j===k)});
+  }
+
+  function mostrar(p){
+    var dir='videos/'+p.pasta+'/';
+    document.querySelectorAll('.pcard[data-slug]').forEach(function(c){c.setAttribute('aria-current',c.dataset.slug===p.slug)});
+    $('p-local').textContent=p.local;$('p-nome').textContent=p.nome;$('p-resumo').textContent=p.resumo;
+    var fi=$('p-ficha');fi.innerHTML='';
+    p.ficha.forEach(function(x){var d=el('div');d.appendChild(el('dt',null,x[0]));d.appendChild(el('dd',null,x[1]));fi.appendChild(d)});
+    var de=$('p-destaques');de.innerHTML='';
+    p.destaques.forEach(function(t){var li=el('li');li.innerHTML=CHECK;li.appendChild(el('span',null,t));de.appendChild(li)});
+    var vs=$('versoes');vs.innerHTML='';
+    p.versoes.forEach(function(v,k){var b=el('button',null,v.nome);b.type='button';b.addEventListener('click',function(){if(b.getAttribute('aria-pressed')!=='true')setVersao(p,k)});vs.appendChild(b)});
+    vs.hidden=p.versoes.length<2;
+    $('versoes-nota').textContent=p.versoes.length>1?'Aberturas diferentes para o mesmo imóvel':'';
+    setVersao(p,0);
+    $('bruto-nome').textContent=p.nome;
+    $('n-drone').textContent=p.drone;$('n-cel').textContent=p.internas;
+    $('tab-drone').hidden=!p.drone;$('tab-cel').hidden=!p.internas;
+    clips('painel-drone',dir,'drone',p.drone,'AÉREA');
+    clips('painel-cel',dir,'cel',p.internas,'INTERNA');
+    abrirAba(p.drone?'tab-drone':'tab-cel');
+  }
+
+  // cartões dos imóveis + vagas para os próximos
+  var pk=$('picker');
+  P.forEach(function(p){
+    var b=el('button','pcard');b.type='button';b.dataset.slug=p.slug;
+    var im=document.createElement('img');im.src='videos/'+p.pasta+'/'+p.versoes[0].arquivo+'.jpg';im.alt='';im.loading='lazy';
+    var t=el('div');t.appendChild(el('b',null,p.nome));t.appendChild(el('span',null,p.local));
+    b.appendChild(im);b.appendChild(t);
+    b.addEventListener('click',function(){mostrar(p);try{history.replaceState(null,'','#'+p.slug)}catch(e){}});
+    pk.appendChild(b);
+  });
+  var vagas=3-P.length%3;
+  for(var i=0;i<vagas;i++){
+    var s=el('div','pcard soon');s.setAttribute('aria-hidden','true');
+    var ph=el('div','ph');ph.innerHTML=PLUS;
+    var t=el('div');t.appendChild(el('b',null,'Próximo imóvel'));t.appendChild(el('span',null,'Novo projeto em edição'));t.appendChild(el('span','tag','Em breve'));
+    s.appendChild(ph);s.appendChild(t);pk.appendChild(s);
+  }
+
+  // pausa os outros vídeos quando um começa
+  document.addEventListener('play',function(e){
+    document.querySelectorAll('video').forEach(function(v){
+      if(v!==e.target && !v.autoplay) v.pause();
+    });
+  },true);
+
+  // abas do material bruto
+  var tabs=document.querySelectorAll('[role="tab"]');
+  function abrirAba(id){
+    tabs.forEach(function(x){
+      var on=x.id===id;x.setAttribute('aria-selected',on);
+      var p=$(x.getAttribute('aria-controls'));
+      p.hidden=!on;
+      if(!on)p.querySelectorAll('video').forEach(function(v){v.pause()});
+    });
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){abrirAba(t.id)})});
+
+  // imóvel inicial: o do link (#slug) ou o mais recente
+  var h=decodeURIComponent(location.hash.slice(1));
+  var ini=P.filter(function(p){return p.slug===h})[0]||P[0];
+  if(ini){mostrar(ini);if(ini.slug===h)$('projeto').scrollIntoView()}
+
+  // copiar número
+  var bt=document.getElementById('copiar');
+  bt.addEventListener('click',function(){
+    var n='48998516170';
+    function ok(){bt.textContent='Copiado';setTimeout(function(){bt.textContent='Copiar número'},2000)}
+    function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('fone'));var s=getSelection();s.removeAllRanges();s.addRange(r)}
+    try{navigator.clipboard.writeText(n).then(ok,fallback)}catch(e){fallback()}
+  });
+})();
+</script>
+</body>
+</html>
