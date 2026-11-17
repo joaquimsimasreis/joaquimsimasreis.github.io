@@ -38,6 +38,7 @@
   --accent:#d4b06a;--accent-text:#d4b06a;--accent-ink:#14100a;--band:#0a1828;--band-ink:#eef2f7;--band-muted:#9fb0c3;color-scheme:dark}
 
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
@@ -87,7 +88,7 @@ a{color:inherit}
 .hud .corner{position:absolute;width:22px;height:22px;border-color:rgba(255,255,255,.7);border-style:solid}
 .c1{top:48px;left:28px;border-width:2px 0 0 2px}.c2{top:48px;right:28px;border-width:2px 2px 0 0}
 .c3{bottom:48px;left:28px;border-width:0 0 2px 2px}.c4{bottom:48px;right:28px;border-width:0 2px 2px 0}
-@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:40px;padding-block:44px 52px}.screen{max-width:280px}}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:36px;padding-block:40px 48px}.screen{max-width:230px}}
 
 /* seletor de imóveis */
 .picker{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:56px}
@@ -99,8 +100,14 @@ a{color:inherit}
 .pcard.soon{cursor:default;border-style:dashed;background:transparent}
 .soon .ph{width:72px;aspect-ratio:9/16;border-radius:6px;border:1px dashed var(--line);display:grid;place-items:center;color:var(--muted)}
 .soon .ph svg{width:22px;height:22px}
-.pcard .tag{display:inline-block;margin-top:6px;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-@media (max-width:860px){.picker{grid-template-columns:1fr}}
+.pcard .tag{display:block;width:fit-content;margin-top:8px;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:860px){
+  .picker{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+    margin:0 calc(-1*var(--gutter-r)) 32px calc(-1*var(--gutter-l));padding:0 var(--gutter-r) 4px var(--gutter-l)}
+  .picker::-webkit-scrollbar{display:none}
+  .pcard{flex:0 0 80%;scroll-snap-align:start}
+  .pcard.soon{flex-basis:64%}
+}
 
 /* faixa de diferenciais */
 .facts{border-bottom:1px solid var(--line);background:var(--surface)}
@@ -115,8 +122,10 @@ section{padding-block:80px;scroll-margin-top:64px}
 .head h2{font-size:clamp(28px,3.6vw,40px);font-weight:800;letter-spacing:-.015em}
 
 /* projeto */
-.project{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:56px;align-items:start}
-.phone{display:grid;gap:14px;justify-items:center}
+.project{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);grid-template-areas:"video head" "video info";grid-template-rows:auto 1fr;column-gap:56px;align-items:start}
+.p-head{grid-area:head;margin-bottom:0}
+.p-info{grid-area:info}
+.phone{grid-area:video;display:grid;gap:14px;justify-items:center}
 .phone video{width:100%;max-width:360px;aspect-ratio:9/16;border-radius:18px;background:#000;display:block;box-shadow:0 24px 50px -24px rgba(15,26,32,.45)}
 .seg{display:inline-flex;padding:4px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
 .seg button{font:600 14px/1 var(--body);padding:10px 18px;border-radius:999px;border:0;background:transparent;color:var(--muted);cursor:pointer}
@@ -130,8 +139,19 @@ section{padding-block:80px;scroll-margin-top:64px}
 .checks{list-style:none;padding:0;margin:0;display:grid;gap:12px}
 .checks li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px}
 .checks svg{width:22px;height:22px;color:var(--accent-text)}
-@media (max-width:860px){.project{grid-template-columns:1fr;gap:40px}}
-@media (max-width:440px){.spec{grid-template-columns:1fr}.spec div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+@media (max-width:860px){
+  .project{grid-template-columns:1fr;grid-template-areas:"head" "video" "info";grid-template-rows:auto;row-gap:24px}
+  .phone video{max-width:300px}
+  .spec{margin:4px 0 24px}
+}
+@media (max-width:480px){
+  .spec div{padding:14px 0}
+  .spec div+div{padding-left:12px}
+  .spec dt{font-size:10px;letter-spacing:.08em}
+  .spec dd{font-size:17px}
+  section{padding-block:56px}
+  .head{margin-bottom:24px}
+}
 
 /* bruto */
 .raw{background:var(--surface);border-block:1px solid var(--line)}
@@ -146,6 +166,22 @@ section{padding-block:80px;scroll-margin-top:64px}
 .clip video{width:100%;max-width:100%;border-radius:8px;background:#000;display:block;object-fit:cover}
 .grid.h video{aspect-ratio:16/9}.grid.v video{aspect-ratio:9/16}
 .clip figcaption{display:flex;justify-content:space-between;gap:8px;font:500 12px/1.2 var(--mono);color:var(--muted);letter-spacing:.04em}
+.clip .v{position:relative}
+.play{position:absolute;inset:0;border:0;padding:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#fff;border-radius:8px}
+.play span{width:46px;height:46px;border-radius:50%;background:rgba(8,20,36,.55);display:grid;place-items:center;transition:opacity .2s}
+.play svg{width:20px;height:20px;margin-left:2px}
+.clip.playing .play span{opacity:0}
+.more{display:none;grid-column:1/-1;justify-self:center;margin-top:10px;font:600 14px/1 var(--body);padding:14px 22px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+@media (max-width:600px){
+  .grid.v{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .clip{gap:5px}
+  .clip figcaption{font-size:10px}
+  .clip figcaption .b{display:none}
+  .play span{width:34px;height:34px}
+  .play svg{width:16px;height:16px}
+  .grid.collapsed .clip:nth-of-type(n+10){display:none}
+  .grid.collapsed .more{display:block}
+}
 
 /* etapas */
 .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;list-style:none;padding:0;margin:0;counter-reset:s}
@@ -236,12 +272,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
           <div class="seg" id="versoes" role="group" aria-label="Escolher versão do vídeo"></div>
           <p class="note" id="versoes-nota"></p>
         </div>
-        <div>
-          <div class="head">
-            <div class="eyebrow" id="p-local"></div>
-            <h2 id="p-nome"></h2>
-            <p class="lead" id="p-resumo"></p>
-          </div>
+        <div class="head p-head">
+          <div class="eyebrow" id="p-local"></div>
+          <h2 id="p-nome"></h2>
+          <p class="lead" id="p-resumo"></p>
+        </div>
+        <div class="p-info">
           <dl class="spec" id="p-ficha"></dl>
           <ul class="checks" id="p-destaques"></ul>
         </div>
@@ -311,16 +347,29 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
   var CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>';
   var PLUS='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
 
+  var PLAY='<span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>';
   function clips(id,dir,pre,n,label){
-    var g=$(id);g.innerHTML='';
+    var g=$(id);g.innerHTML='';g.classList.toggle('collapsed',n>9);
     for(var i=1;i<=n;i++){
-      var f=el('figure','clip'),v=document.createElement('video');
+      var f=el('figure','clip'),box=el('div','v'),v=document.createElement('video');
       v.src=dir+pre+i+'.mp4';v.poster=dir+pre+i+'.jpg';
-      v.preload='none';v.controls=true;v.muted=true;v.playsInline=true;v.loop=true;
+      v.preload='none';v.muted=true;v.playsInline=true;v.loop=true;
       v.setAttribute('controlslist','nodownload');v.disablePictureInPicture=true;
-      v.setAttribute('aria-label',label+' '+i);
-      var c=el('figcaption');c.appendChild(el('span',null,label+' '+String(i).padStart(2,'0')));c.appendChild(el('span',null,'BRUTO'));
-      f.appendChild(v);f.appendChild(c);g.appendChild(f);
+      var b=el('button','play');b.type='button';b.innerHTML=PLAY;
+      b.setAttribute('aria-label','Reproduzir tomada '+label.toLowerCase()+' '+i);
+      (function(v,f,b){
+        b.addEventListener('click',function(){if(v.paused)v.play();else v.pause()});
+        v.addEventListener('play',function(){f.classList.add('playing')});
+        v.addEventListener('pause',function(){f.classList.remove('playing')});
+      })(v,f,b);
+      box.appendChild(v);box.appendChild(b);
+      var c=el('figcaption');c.appendChild(el('span',null,label+' '+String(i).padStart(2,'0')));c.appendChild(el('span','b','BRUTO'));
+      f.appendChild(box);f.appendChild(c);g.appendChild(f);
+    }
+    if(n>9){
+      var m=el('button','more','Ver todas as '+n+' tomadas');m.type='button';
+      m.addEventListener('click',function(){g.classList.remove('collapsed');m.remove()});
+      g.appendChild(m);
     }
   }
 
