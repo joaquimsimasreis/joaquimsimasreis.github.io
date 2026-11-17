@@ -1,10 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="#d4b06a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-  <!-- enquadramento da câmera -->
-  <path d="M5 15V5h10M33 5h10v10M43 33v10H33M15 43H5V33"/>
-  <!-- casa -->
-  <path d="M12.5 25.5L24 15.5l11.5 10"/>
-  <path d="M16 22.5V34.5h16V22.5"/>
-  <path d="M21.5 34.5v-6.5h5v6.5"/>
-  <!-- drone -->
-  <circle cx="24" cy="9.5" r="1.6" fill="#d4b06a" stroke="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="#d4b06a" stroke-width="2.4" stroke-linecap="round">
+  <!-- hélices girando (arcos abertos para dentro) -->
+  <circle cx="11" cy="11" r="7.5" pathLength="100" stroke-dasharray="72 28" transform="rotate(95 11 11)"/>
+  <circle cx="37" cy="11" r="7.5" pathLength="100" stroke-dasharray="72 28" transform="rotate(185 37 11)"/>
+  <circle cx="11" cy="37" r="7.5" pathLength="100" stroke-dasharray="72 28" transform="rotate(5 11 37)"/>
+  <circle cx="37" cy="37" r="7.5" pathLength="100" stroke-dasharray="72 28" transform="rotate(275 37 37)"/>
+  <!-- braços -->
+  <path d="M18.7 18.7L11 11M29.3 18.7L37 11M18.7 29.3L11 37M29.3 29.3L37 37"/>
+  <!-- motores -->
+  <g fill="#d4b06a" stroke="none"><circle cx="11" cy="11" r="1.8"/><circle cx="37" cy="11" r="1.8"/><circle cx="11" cy="37" r="1.8"/><circle cx="37" cy="37" r="1.8"/></g>
+  <!-- câmera: lente gravando -->
+  <circle cx="24" cy="24" r="7.5"/>
+  <circle cx="24" cy="24" r="3.2" fill="#e5484d" stroke="none"/>
 </svg>
