@@ -232,7 +232,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
       <div class="picker" id="picker"></div>
       <div class="project">
         <div class="phone">
-          <video id="final" controls playsinline preload="metadata"></video>
+          <video id="final" controls controlslist="nodownload" disablepictureinpicture playsinline preload="metadata"></video>
           <div class="seg" id="versoes" role="group" aria-label="Escolher versão do vídeo"></div>
           <p class="note" id="versoes-nota"></p>
         </div>
@@ -317,6 +317,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
       var f=el('figure','clip'),v=document.createElement('video');
       v.src=dir+pre+i+'.mp4';v.poster=dir+pre+i+'.jpg';
       v.preload='none';v.controls=true;v.muted=true;v.playsInline=true;v.loop=true;
+      v.setAttribute('controlslist','nodownload');v.disablePictureInPicture=true;
       v.setAttribute('aria-label',label+' '+i);
       var c=el('figcaption');c.appendChild(el('span',null,label+' '+String(i).padStart(2,'0')));c.appendChild(el('span',null,'BRUTO'));
       f.appendChild(v);f.appendChild(c);g.appendChild(f);
@@ -367,6 +368,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
     var t=el('div');t.appendChild(el('b',null,'Próximo imóvel'));t.appendChild(el('span',null,'Novo projeto em edição'));t.appendChild(el('span','tag','Em breve'));
     s.appendChild(ph);s.appendChild(t);pk.appendChild(s);
   }
+
+  // sem menu de "salvar vídeo" no botão direito
+  document.addEventListener('contextmenu',function(e){if(e.target.tagName==='VIDEO')e.preventDefault()});
 
   // pausa os outros vídeos quando um começa
   document.addEventListener('play',function(e){
