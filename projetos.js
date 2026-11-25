@@ -7,11 +7,10 @@ window.PROJETOS = [
     pasta: "loteamento-ne",
     nome: "Loteamento Nova Esperança",
     local: "Centro · Canelinha/SC",
-    resumo: "Loteamento no Centro de Canelinha/SC, com a serra ao fundo. Voo de drone com abertura em 3D: o nome cai sobre o terreno, as linhas dos lotes aparecem e as casas sobem até o bairro pronto.",
+    resumo: "Loteamento no Centro de Canelinha/SC, com a serra ao fundo. Voo de drone sobre o terreno e edição completa, pronta para as redes.",
     ficha: [["Tipo", "Loteamento"], ["Captação", "Drone · vídeo"], ["Vídeo", "Vertical · 35 s"]],
     destaques: [
-      "Abertura 3D: letras caindo no terreno e o bairro surgindo no mesmo plano",
-      "Voo baixo pela rua com as casas 3D prontas ao redor",
+      "Voo de drone sobre o terreno, com a serra ao fundo",
       "29 lotes a partir de 360 m², com o terreno como está hoje",
       "Marcador no Centro de Canelinha/SC e fecho com WhatsApp"
     ],
