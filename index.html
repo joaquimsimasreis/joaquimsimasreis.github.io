@@ -80,7 +80,8 @@ a{color:inherit}
 .hero .lead{color:var(--band-muted);font-size:17px}
 .hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .screen{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:9/16;width:100%;max-width:320px;justify-self:center;background:#000;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
-.screen video{width:100%;height:100%;object-fit:cover;display:block}
+.screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:opacity .8s ease}
+.screen video:not(.ativo){opacity:0}
 .hud{position:absolute;inset:0;pointer-events:none;font:500 11px/1 var(--mono);letter-spacing:.08em;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6)}
 .hud span{position:absolute;padding:6px 8px;background:rgba(0,0,0,.35);border-radius:4px}
 .hud .tl{top:12px;left:12px}.hud .tr{top:12px;right:12px}.hud .bl{bottom:12px;left:12px}
@@ -237,7 +238,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
       </div>
     </div>
     <div class="screen">
-      <video src="videos/exclusive-3q/drone9.mp4" poster="videos/exclusive-3q/drone9.jpg" autoplay muted loop playsinline aria-label="Voo de drone sobre o Residencial Exclusive"></video>
+      <video class="ativo" src="videos/exclusive-3q/drone9.mp4" poster="videos/exclusive-3q/drone9.jpg" autoplay muted loop playsinline aria-label="Voo de drone sobre o Residencial Exclusive"></video>
+      <video autoplay muted loop playsinline preload="none" aria-hidden="true"></video>
       <div class="hud" aria-hidden="true">
         <span class="tl rec">REC</span>
         <span class="tr">CANELINHA · SC</span>
@@ -453,6 +455,33 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
     function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('fone'));var s=getSelection();s.removeAllRanges();s.addRange(r)}
     try{navigator.clipboard.writeText(n).then(ok,fallback)}catch(e){fallback()}
   });
+})();
+
+// vídeo do topo: vai trocando (com fusão) pelos clipes de drone de todos os projetos do site, um de cada imóvel por vez
+(function(){
+  var tela=document.querySelector('.hero .screen'); if(!tela)return;
+  var vs=tela.querySelectorAll('video'); if(vs.length<2)return;
+  var P=window.PROJETOS||[], listas=P.map(function(p){var a=[];for(var i=1;i<=(p.drone||0);i++)a.push({src:'videos/'+p.pasta+'/drone'+i+'.mp4',poster:'videos/'+p.pasta+'/drone'+i+'.jpg',nome:p.nome});return a});
+  var fila=[],mx=0; listas.forEach(function(l){mx=Math.max(mx,l.length)});
+  for(var i=0;i<mx;i++)listas.forEach(function(l){if(l[i])fila.push(l[i])});
+  if(fila.length<2||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
+  var a=vs[0],b=vs[1],k=0,TEMPO=6000;
+  for(var j=0;j<fila.length;j++)if(a.getAttribute('src')===fila[j].src){k=j+1;break}   // começa pelo clipe que já está na tela
+  function troca(){
+    var c=fila[k%fila.length];k++;
+    var feito=false;
+    function pronto(){
+      if(feito)return;feito=true;b.removeEventListener('canplay',pronto);
+      var pr=b.play();
+      var vira=function(){b.classList.add('ativo');a.classList.remove('ativo');b.removeAttribute('aria-hidden');a.setAttribute('aria-hidden','true');
+        var velho=a;a=b;b=velho;setTimeout(function(){if(!velho.classList.contains('ativo'))velho.pause()},900);setTimeout(troca,TEMPO)};
+      if(pr&&pr.then)pr.then(vira,function(){setTimeout(troca,TEMPO)});else vira();
+    }
+    b.preload='auto';b.poster=c.poster;b.src=c.src;b.setAttribute('aria-label','Voo de drone: '+c.nome);
+    b.addEventListener('canplay',pronto);b.load();
+    setTimeout(function(){if(!feito){feito=true;b.removeEventListener('canplay',pronto);setTimeout(troca,TEMPO)}},8000);   // rede lenta: tenta o próximo
+  }
+  setTimeout(troca,TEMPO);
 })();
 </script>
 </body>
